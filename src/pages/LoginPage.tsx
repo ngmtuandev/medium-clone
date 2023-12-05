@@ -4,6 +4,7 @@ import { Button } from "@nextui-org/react";
 import Swal from "sweetalert";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useLogin } from "@/hooks/auth/useLogin";
+import { useAuth } from "@/store/authStore";
 const LoginPage = () => {
   const navigate = useNavigate();
   const { mutate: $login, isPending } = useLogin();
@@ -22,12 +23,15 @@ const LoginPage = () => {
     },
   });
 
+  const handleSetIsLogin = useAuth((state: any) => state.setIsLogin);
+
   const handleLogin = () => {
     const data = getValues();
     $login(data, {
       onSuccess: (rs) => {
         console.log("rs", rs);
         window.localStorage.setItem("token-user-medium", rs?.token);
+        handleSetIsLogin(!!localStorage.getItem("token-user-medium"));
         navigate("/");
       },
       onError: () => {

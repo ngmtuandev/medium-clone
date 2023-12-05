@@ -15,3 +15,10 @@ export const authApiLogin = async (data: TInput) => {
   });
   return rs.data;
 };
+
+export const getMeApi = async () => {
+  const rs = await axiosClient("/users/me", {
+    method: "get",
+  });
+  return rs.data;
+};
