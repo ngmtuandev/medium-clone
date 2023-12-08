@@ -1,14 +1,14 @@
 import { Header } from "@/components";
 import getRandomImage from "@/helpers/randomImage";
 import { useGetItemPost } from "@/hooks/post/useGetItemPost";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import icons from "@/utils/icons";
 import { useLikePost } from "@/hooks/post/useLikePost";
 import { useAuth } from "@/store/authStore";
 import { useUnLikePost } from "@/hooks/post/useUnLikePost";
 const DetailPost = () => {
   let { slug } = useParams();
+  const navigate = useNavigate();
   const { mutate: $likePost, isPending } = useLikePost();
   const { mutate: $unLikePost } = useUnLikePost();
   const { itemPost, isLoading } = useGetItemPost(slug!);
@@ -37,7 +37,10 @@ const DetailPost = () => {
           <div className="justify-center flex my-5 text-[30px] uppercase text-center font-bold text-gray-800">
             <h2>{itemPost?.title}</h2>
           </div>
-          <div className="flex items-center gap-2">
+          <div
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={() => navigate(`/user/${itemPost?.author?.username}`)}
+          >
             <div>
               <img
                 className="w-[40px] rounded-full h-[40px]"

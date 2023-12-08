@@ -3,7 +3,7 @@ import icons from "@/utils/icons";
 import { useEffect, memo } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 const Header = () => {
-  const { IoIosSearch, IoIosLogOut } = icons;
+  const { IoIosSearch, IoIosLogOut, TfiWrite } = icons;
 
   const navigation = useNavigate();
 
@@ -57,10 +57,16 @@ const Header = () => {
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center gap-4 cursor-pointer">
-            <div>Xin chào, {dataUser?.username}</div>
-            <div onClick={handleLogout}>
-              <IoIosLogOut size={25} color="black"></IoIosLogOut>
+          <div className="flex items-center gap-6">
+            <div className="flex justify-center cursor-pointer items-center">
+              <TfiWrite size={22}></TfiWrite>
+              <span className="ml-2">Write</span>
+            </div>
+            <div className="flex items-center justify-center gap-4 cursor-pointer">
+              <div>Hello, {dataUser?.username}</div>
+              <div onClick={handleLogout}>
+                <IoIosLogOut size={25} color="black"></IoIosLogOut>
+              </div>
             </div>
           </div>
         )}

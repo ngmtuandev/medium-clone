@@ -16,6 +16,7 @@ const Posts = () => {
 
   const handleFetchNextPage = () => {
     if (hasNextPage) {
+      // ktra còn data không ?
       fetchNextPage();
     }
   };
