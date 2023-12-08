@@ -10,6 +10,9 @@ export default {
     "./node_modules/@nextui-org/theme/dist/components/(button|snippet|code|input).js",
   ],
   theme: {
+    padding: {
+      main: "40px",
+    },
     extend: {
       backgroundColor: {
         "bg-brown-main-50": "#8B7D6B",

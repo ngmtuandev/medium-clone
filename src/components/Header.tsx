@@ -20,9 +20,12 @@ const Header = () => {
   };
 
   return (
-    <div className="flex w-[100%] shadow-lg h-[70px] gap-3 justify-center items-center">
+    <div className="flex w-[100%] fixed z-100 bg-white shadow-lg h-[70px] gap-3 justify-center items-center">
       <div className="w-[15%] h-[100%] ">
-        <div className="flex justify-center items-center">
+        <div
+          className="flex justify-center items-center cursor-pointer"
+          onClick={() => navigation("/")}
+        >
           <span className="text-[40px] font-bold text-color-cray-200">Me</span>
           <span className="text-[40px] font-bold text-gray-800">dium</span>
         </div>
@@ -34,7 +37,7 @@ const Header = () => {
       </div>
       <div className="w-[35%] flex justify-center items-center h-[100%]">
         <input
-          className="w-[65%] h-[40px] outline-none border rounded-tl-lg rounded-bl-lg pl-2 
+          className="w-[65%] pl-[8px] h-[40px] outline-none border rounded-tl-lg rounded-bl-lg pl-2 
           border-gray-500 flex justify-center items-center"
           placeholder="Bạn muốn tìm kiếm gì ?"
         ></input>

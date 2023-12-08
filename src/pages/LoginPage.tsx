@@ -26,10 +26,11 @@ const LoginPage = () => {
   const handleSetIsLogin = useAuth((state: any) => state.setIsLogin);
 
   const handleLogin = () => {
-    const data = getValues();
+    const data = getValues(); // handle submit react hook form
     $login(data, {
       onSuccess: (rs) => {
         console.log("rs", rs);
+
         window.localStorage.setItem("token-user-medium", rs?.token);
         handleSetIsLogin(!!localStorage.getItem("token-user-medium"));
         navigate("/");
@@ -41,11 +42,14 @@ const LoginPage = () => {
           icon: "warning",
         });
       },
-    });
-    reset({
-      username: "",
-      email: "",
-      password: "",
+      onSettled: () => {
+        // finnally
+        reset({
+          username: "",
+          email: "",
+          password: "",
+        });
+      },
     });
   };
 

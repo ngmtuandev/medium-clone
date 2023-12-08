@@ -1,9 +1,19 @@
 import { Header } from "@/components";
+import Posts from "@/components/Posts";
+import Tags from "@/components/Tags";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="w-[100%]">
       <Header></Header>
+      <div className="flex px-main">
+        <div className="w-[70%] h-screen ">
+          <Posts></Posts>
+        </div>
+        <div className="w-[30%] h-screen ">
+          <Tags></Tags>
+        </div>
+      </div>
     </div>
   );
 };
