@@ -96,15 +96,17 @@ const UserProfilePage = () => {
             </div>
             <div className="flex mt-4 items-center text-color-cray-200 gap-2">
               <div>
-                <IoMdBook size={22}></IoMdBook>
+                <IoMdBook size={20}></IoMdBook>
               </div>
-              <span className="font-semibold ">Book Author</span>
+              <span className="font-semibold text-[12px]">Book Author</span>
             </div>
-            <div className="flex items-center text-yellow-500 gap-2">
+            <div className="flex items-center mt-2 text-yellow-300 gap-2">
               <div>
-                <FaUserFriends size={22}></FaUserFriends>
+                <FaUserFriends size={20}></FaUserFriends>
               </div>
-              <span className="font-semibold ">Friend of Medium</span>
+              <span className="font-semibold text-[12px]">
+                Friend of Medium
+              </span>
             </div>
             <div className="mt-4">
               <Button text="Follow"></Button>

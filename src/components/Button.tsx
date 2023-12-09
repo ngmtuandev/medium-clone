@@ -20,11 +20,11 @@ const Button = ({
       isLoading={isLoading}
       className={twMerge(
         clsx(
-          "flex w-[30%] h-[30px] cursor-pointer hover:bg-opacity-80 justify-center items-center p-[12px] rounded-sm bg-color-cray-200"
+          "flex w-[40%] h-[30px] cursor-pointer hover:bg-opacity-80 justify-center items-center p-[12px] rounded-sm bg-color-cray-200"
         )
       )}
     >
-      <span className="text-white">{text}</span>
+      <span className="text-white text-center">{text}</span>
     </Btn>
   );
 };

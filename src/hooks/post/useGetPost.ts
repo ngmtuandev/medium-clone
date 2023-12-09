@@ -8,7 +8,7 @@ export const useGetPosts = () => {
     queryFn: ({ pageParam }) => getApiPosts(pageParam), // pageParams : page Current
     initialPageParam: "", // params initial
     getNextPageParam: ({ nextCursor }) => {
-      console.log("nextCurSor >>>", nextCursor);
+      // console.log("nextCurSor >>>", nextCursor);
       // nextCursor : trang tiếp theo khi đã lướt đến giá trị cuối của trang hiện tại -> data api trả về
       // sau khi có nextCursor --> sẽ truyển lại lên queryFn
       // nextCursor <=> pageParam

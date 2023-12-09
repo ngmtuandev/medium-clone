@@ -1,11 +1,11 @@
 import { useGetTags } from "@/hooks/tag/useGetTags";
 import { useTagStore } from "@/store/tagsStore";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { Chip } from "@nextui-org/react";
 
 const Tags = () => {
   const { tags, isLoading } = useGetTags();
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const setTags = useTagStore((state: any) => state.setTags);
   const _tags = useTagStore((state: any) => state.tags)?.slice(0, 10);
   useEffect(() => {
@@ -47,4 +47,4 @@ const Tags = () => {
   );
 };
 
-export default Tags;
+export default memo(Tags);

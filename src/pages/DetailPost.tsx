@@ -7,17 +7,19 @@ import { useLikePost } from "@/hooks/post/useLikePost";
 import { useAuth } from "@/store/authStore";
 import { useUnLikePost } from "@/hooks/post/useUnLikePost";
 import { useTagStore } from "@/store/tagsStore";
+import ModelComment from "@/components/ModelComment";
+import { useComment } from "@/store/commentStore";
+import { memo, useEffect } from "react";
+import { useGetComments } from "@/hooks/comment/useGetComments";
 const DetailPost = () => {
   let { slug } = useParams();
   const navigate = useNavigate();
-  const tags = useTagStore((state: any) => state.tags);
-  console.log("test tags store >>>", tags);
   const { mutate: $likePost, isPending } = useLikePost();
   const { mutate: $unLikePost } = useUnLikePost();
   const { itemPost, isLoading } = useGetItemPost(slug!);
   const dataUser = useAuth((state: any) => state.dataUser);
-  console.log("data user", dataUser);
-  const { AiFillLike, AiOutlineLike } = icons;
+  const { AiFillLike, AiOutlineLike, FaComments } = icons;
+
   const handleLike = (id: string) => {
     $likePost(id);
   };
@@ -26,8 +28,20 @@ const DetailPost = () => {
     $unLikePost(id);
   };
 
+  const setIsShowModel = useComment((state: any) => state.setIsShowModel);
+  const isShowModel = useComment((state: any) => state.isShowModel);
+  const handleShowModel = () => {
+    window.scrollTo(0, 0);
+    setIsShowModel(true);
+  };
+
+  useEffect(() => {
+    return setIsShowModel(false);
+  }, []);
+
   return (
-    <div className="w-[100%]">
+    <div className="w-[100%] relative">
+      {isShowModel && <ModelComment postId={itemPost?.id}></ModelComment>}
       <Header></Header>
       <div className="w-[100%] px-main flex justify-center flex-col items-center">
         <div>
@@ -59,7 +73,7 @@ const DetailPost = () => {
               </span>
             </div>
           </div>
-          <div className="pt-[16px] px-[8px] flex items-center pb-[16px] my-6 border-t-1 border-b-1">
+          <div className="pt-[16px] px-[8px] flex items-center pb-[16px] gap-10 my-6 border-t-1 border-b-1">
             <div className="flex justify-center items-center gap-2">
               <div
                 className="cursor-pointer"
@@ -85,7 +99,9 @@ const DetailPost = () => {
               </div>
               <span>{itemPost?.likes?.length}</span>
             </div>
-            <div></div>
+            <div onClick={handleShowModel}>
+              <FaComments size={20}></FaComments>
+            </div>
           </div>
           <div>
             <div dangerouslySetInnerHTML={{ __html: itemPost?.html }} />
@@ -96,4 +112,4 @@ const DetailPost = () => {
   );
 };
 
-export default DetailPost;
+export default memo(DetailPost);
