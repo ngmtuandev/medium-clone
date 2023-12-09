@@ -9,7 +9,7 @@ import { useState } from "react";
 //   description: string;
 // };
 
-const { mutate: $createPost, isPending } = useCreateNewPost();
+// const { mutate: $createPost, isPending } = useCreateNewPost();
 
 const CreatePost = () => {
   const [showTitle, setShowTitle] = useState(false);
@@ -24,26 +24,26 @@ const CreatePost = () => {
   });
   const handleCreatePost = async () => {
     console.log("data", data);
-    // const rs = await fetch(
-    //   "https://ulitmate-blog-app-production.up.railway.app/api/posts",
-    //   {
-    //     body: JSON.stringify(data),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${localStorage.getItem("token-user-medium")}`,
-    //     },
-    //     method: "post",
-    //   }
-    // );
-    // console.log(rs);
-    $createPost(data, {
-      onSuccess: () => {
-        alert("succes");
-      },
-      onError: () => {
-        alert("err");
-      },
-    });
+    const rs = await fetch(
+      "https://ulitmate-blog-app-production.up.railway.app/api/posts",
+      {
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token-user-medium")}`,
+        },
+        method: "post",
+      }
+    );
+    console.log(rs);
+    // $createPost(data, {
+    //   onSuccess: () => {
+    //     alert("succes");
+    //   },
+    //   onError: () => {
+    //     alert("err");
+    //   },
+    // });
   };
   const handleSelectImage = async (event: any) => {
     console.log(event.target.files);

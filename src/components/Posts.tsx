@@ -1,5 +1,4 @@
 import getRandomImage from "@/helpers/randomImage";
-import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import formatCreatedAt from "@/helpers/formatDate";
 import getRandomNumber from "@/helpers/randomReadTime";

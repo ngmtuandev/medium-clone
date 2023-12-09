@@ -8,6 +8,9 @@ import { useState } from "react";
 import { useAddComment } from "@/hooks/comment/useAddComment";
 import { useGetComments } from "@/hooks/comment/useGetComments";
 import formatCreatedAt from "@/helpers/formatDate";
+import { Tooltip } from "@nextui-org/react";
+import Test from "./Test";
+
 const ModelComment = ({ postId }: { postId: string }) => {
   const setIsShowModel = useComment((state: any) => state.setIsShowModel);
   const dataUser = useAuth((state: any) => state.dataUser);
@@ -32,6 +35,7 @@ const ModelComment = ({ postId }: { postId: string }) => {
             title: "Comment Blog Successfully",
             icon: "success",
           });
+          setBody("");
         },
       }
     );
@@ -89,10 +93,16 @@ const ModelComment = ({ postId }: { postId: string }) => {
             return (
               <div className="pb-[8px] border-b-1 mt-2">
                 <div className="flex items-center">
-                  <img
-                    className="w-[36px] mr-2 h-[36px] rounded-full"
-                    src={item?.user?.image ?? getRandomImage()}
-                  ></img>
+                  <Tooltip
+                    className="px-[8px] h-[30px]"
+                    showArrow={true}
+                    content={`My name is ${item?.user?.username}`}
+                  >
+                    <img
+                      className="w-[36px] mr-2 h-[36px] rounded-full"
+                      src={item?.user?.image ?? getRandomImage()}
+                    ></img>
+                  </Tooltip>
                   <div className="flex flex-col">
                     <span>{item?.user?.username}</span>
                     <span className="text-[12px] font-semibold">
@@ -101,7 +111,7 @@ const ModelComment = ({ postId }: { postId: string }) => {
                   </div>
                 </div>
                 <div className="mt-2">
-                  <span>{item?.text}</span>
+                  <span>{item?.text}</span>T
                 </div>
               </div>
             );
