@@ -22,7 +22,7 @@ const Posts = () => {
   };
 
   return (
-    <div className="pr-main mt-28">
+    <div className="pr-main">
       <InfiniteScroll
         dataLength={_posts?.length ?? 0}
         next={handleFetchNextPage}

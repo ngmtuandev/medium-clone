@@ -1,5 +1,6 @@
 import { useAuth } from "@/store/authStore";
 import icons from "@/utils/icons";
+import path from "@/utils/path";
 import { useEffect, memo } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 const Header = () => {
@@ -20,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex w-[100%] fixed z-100 bg-white shadow-lg h-[70px] gap-3 justify-center items-center">
+    <div className="flex w-[100%] fixed z-1000 bg-white shadow-lg h-[70px] gap-3 justify-center items-center">
       <div className="w-[15%] h-[100%] ">
         <div
           className="flex justify-center items-center cursor-pointer"
@@ -58,7 +59,10 @@ const Header = () => {
           </div>
         ) : (
           <div className="flex items-center gap-6">
-            <div className="flex justify-center cursor-pointer items-center">
+            <div
+              className="flex justify-center cursor-pointer items-center"
+              onClick={() => navigation(`${path.CREATE_POST}`)}
+            >
               <TfiWrite size={22}></TfiWrite>
               <span className="ml-2">Write</span>
             </div>

@@ -29,8 +29,6 @@ const LoginPage = () => {
     const data = getValues(); // handle submit react hook form
     $login(data, {
       onSuccess: (rs) => {
-        console.log("rs", rs);
-
         window.localStorage.setItem("token-user-medium", rs?.token);
         handleSetIsLogin(!!localStorage.getItem("token-user-medium"));
         navigate("/");

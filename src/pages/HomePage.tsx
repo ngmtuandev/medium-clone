@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div className="w-[100%]">
       <Header></Header>
-      <div className="flex px-main">
+      <div className="flex px-main pt-[100px]">
         <div className="w-[70%] h-screen ">
           <Posts></Posts>
         </div>

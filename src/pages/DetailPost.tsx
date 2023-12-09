@@ -6,9 +6,12 @@ import icons from "@/utils/icons";
 import { useLikePost } from "@/hooks/post/useLikePost";
 import { useAuth } from "@/store/authStore";
 import { useUnLikePost } from "@/hooks/post/useUnLikePost";
+import { useTagStore } from "@/store/tagsStore";
 const DetailPost = () => {
   let { slug } = useParams();
   const navigate = useNavigate();
+  const tags = useTagStore((state: any) => state.tags);
+  console.log("test tags store >>>", tags);
   const { mutate: $likePost, isPending } = useLikePost();
   const { mutate: $unLikePost } = useUnLikePost();
   const { itemPost, isLoading } = useGetItemPost(slug!);

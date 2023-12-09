@@ -1,17 +1,31 @@
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
+import { Button as Btn } from "@nextui-org/react";
 
-const Button = ({ text }: { text: string }) => {
+const Button = ({
+  text,
+  isLoading,
+  handleBtn,
+}: {
+  text: string;
+  isLoading: boolean;
+  handleBtn: () => void;
+}) => {
+  const handleSubmit = () => {
+    handleBtn();
+  };
   return (
-    <div
+    <Btn
+      onClick={handleSubmit}
+      isLoading={isLoading}
       className={twMerge(
         clsx(
-          "flex w-[30%] h-[30px] cursor-pointer hover:bg-opacity-80 justify-center items-center p-[12px] rounded-lg bg-color-cray-200"
+          "flex w-[30%] h-[30px] cursor-pointer hover:bg-opacity-80 justify-center items-center p-[12px] rounded-sm bg-color-cray-200"
         )
       )}
     >
       <span className="text-white">{text}</span>
-    </div>
+    </Btn>
   );
 };
 
