@@ -11,7 +11,7 @@ export default {
   ],
   theme: {
     padding: {
-      main: "40px",
+      main: "60px",
     },
     extend: {
       backgroundColor: {
@@ -23,5 +23,5 @@ export default {
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui(), require("tailwind-scrollbar")],
 };

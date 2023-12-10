@@ -5,7 +5,7 @@ export const apiAddComment = async ({
   postId,
 }: {
   postId: string;
-  data: string;
+  data: any;
 }) => {
   const rs = await axiosClient(`/${postId}/comments`, {
     data: data,

@@ -4,10 +4,14 @@ import formatCreatedAt from "@/helpers/formatDate";
 import getRandomNumber from "@/helpers/randomReadTime";
 import { useGetPosts } from "@/hooks/post/useGetPost";
 import { useNavigate } from "react-router-dom";
+import { Skeleton } from "@nextui-org/react";
+
+import Tags from "./Tags";
 const Posts = () => {
   const navigate = useNavigate();
 
-  const { data, fetchNextPage, hasNextPage } = useGetPosts();
+  const { data, fetchNextPage, hasNextPage, isLoading } = useGetPosts();
+  console.log("is loading >>>>", isLoading);
 
   const _posts = data?.pages?.reduce((acc, page) => {
     return [...acc, ...page.posts];
@@ -22,6 +26,9 @@ const Posts = () => {
 
   return (
     <div className="pr-main">
+      <div className="sm:flex overflow-hidden scrollbar-thin scrollbar-thumb-color-cray-200 scrollbar-track-gray-100 overflow-x-auto sm:mb-6 pb-[16px] md:hidden">
+        <Tags></Tags>
+      </div>
       <InfiniteScroll
         dataLength={_posts?.length ?? 0}
         next={handleFetchNextPage}
@@ -65,10 +72,12 @@ const Posts = () => {
               </div>
             </div>
             <div className="w-[35%] ml-4">
+              {/* <Skeleton isLoaded={!isLoading}> */}
               <img
                 src={getRandomImage()}
                 className="w-[70%] rounded-md my-4"
               ></img>
+              {/* </Skeleton> */}
             </div>
           </div>
         ))}

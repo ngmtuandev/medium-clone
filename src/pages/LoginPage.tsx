@@ -53,7 +53,7 @@ const LoginPage = () => {
 
   return (
     <div className="w-[100%] h-screen flex flex-col justify-center items-center">
-      <div className="w-[35%] h-[67%] rounded-xl bg-gray-50 p-[20px] shadow-2xl">
+      <div className="md:w-[35%] sm:w-[70%] h-[67%] rounded-xl bg-gray-50 p-[20px] shadow-2xl">
         <div className="flex justify-center items-center">
           <span className="text-[40px] font-bold text-color-cray-200">Me</span>
           <span className="text-[40px] font-bold text-gray-800">dium</span>

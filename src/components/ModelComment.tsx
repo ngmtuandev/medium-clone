@@ -9,7 +9,6 @@ import { useAddComment } from "@/hooks/comment/useAddComment";
 import { useGetComments } from "@/hooks/comment/useGetComments";
 import formatCreatedAt from "@/helpers/formatDate";
 import { Tooltip } from "@nextui-org/react";
-import Test from "./Test";
 
 const ModelComment = ({ postId }: { postId: string }) => {
   const setIsShowModel = useComment((state: any) => state.setIsShowModel);
@@ -47,7 +46,7 @@ const ModelComment = ({ postId }: { postId: string }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-[40%] h-[100%] gap-4 flex-col flex pt-[100px] px-main bg-white"
+        className="md:w-[40%] sm:w-[100%] h-[100%] gap-4 flex-col flex pt-[100px] px-main bg-white"
       >
         <div className="w-[100%] py-[8px] flex justify-between">
           <div>
@@ -88,10 +87,10 @@ const ModelComment = ({ postId }: { postId: string }) => {
             </div>
           </div>
         </div>
-        <div className="w-[100%] h-auto overflow-auto scroll-smooth">
+        <div className="w-[100%] h-auto overflow-auto scrollbar-none scrollbar-thumb-gray-900 scrollbar-track-gray-100">
           {comments?.map((item: any) => {
             return (
-              <div className="pb-[8px] border-b-1 mt-2">
+              <div key={item?.id} className="pb-[8px] border-b-1 mt-2">
                 <div className="flex items-center">
                   <Tooltip
                     className="px-[8px] h-[30px]"

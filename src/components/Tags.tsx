@@ -21,7 +21,7 @@ const Tags = () => {
   };
   return (
     <div className="flex-1">
-      <div className="gap-3 flex flex-wrap">
+      <div className="gap-3 scrollbar-none sm:flex md:flex md:flex-wrap">
         {_tags?.map((tag: any) => {
           return (
             <div key={tag?.id} className="cursor-pointer">
