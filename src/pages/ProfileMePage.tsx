@@ -8,8 +8,25 @@ import { useGetFollows } from "@/hooks/user/useAllFlower";
 const ProfileMePage = () => {
   const dataUser = useAuth((state: any) => state.dataUser);
   const { posts } = useGetPostByUser(dataUser?.username!);
-  const { follows, isLoading } = useGetFollows(dataUser?.id);
-  console.log("follower >>>", follows);
+  // const { follows, isLoading } = useGetFollows(dataUser?.id);
+  // console.log("follower >>>", follows);
+
+  // useEffect(() => {
+  //   const getchApi = async () => {
+  //     let data = await fetch(
+  //       "https://ulitmate-blog-app-production.up.railway.app/api/users/followers",
+  //       {
+  //         method: "get",
+  //         body: JSON.stringify({ id: dataUser?.id }),
+  //       }
+  //     );
+  //     data = await data.json();
+  //     console.log("data follower", data);
+  //     return data;
+  //   };
+  //   getchApi();
+  // }, []);
+
   const [tab, setTab] = useState("Posts");
   const handleSelectTab = (key: any) => {
     setTab(key);
@@ -18,7 +35,13 @@ const ProfileMePage = () => {
   return (
     <div>
       <Header></Header>
-      <div className="w-[100%] flex justify-between pt-[120px] h-screen  px-main">
+      <div className="w-[100%]">
+        <img
+          src={getRandomImage()}
+          className="w-[100%] h-[250px] object-cover"
+        ></img>
+      </div>
+      <div className="w-[100%] flex justify-between pt-[40px] h-screen  px-main">
         <div className="w-[70%] pr-[12px] border-r-1">
           <Tabs
             key={"underlined"}
