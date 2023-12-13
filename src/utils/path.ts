@@ -5,6 +5,7 @@ const path = {
   SIGNUP: "/sign-up",
   POST__DETAIL: "/post/:slug",
   CREATE_POST: "/create-post",
+  INFO_ME: "/info-me/:username",
 };
 
 export default path;

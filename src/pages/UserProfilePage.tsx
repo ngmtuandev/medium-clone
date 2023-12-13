@@ -6,13 +6,46 @@ import icons from "@/utils/icons";
 import { useGetPostByUser } from "@/hooks/user/useAllPostByUser";
 import formatCreatedAt from "@/helpers/formatDate";
 import getRandomNumber from "@/helpers/randomReadTime";
+import { useUnFollowUser } from "@/hooks/user/useUnFlollow";
+import { useFollowUser } from "@/hooks/user/useFollow";
+import Swal from "sweetalert";
+import { useQueryClient } from "@tanstack/react-query";
+
 const UserProfilePage = () => {
   const { username } = useParams();
+  const queryClient = useQueryClient();
   const { FaUserFriends, IoMdBook } = icons;
   const navigate = useNavigate();
   const { userProfile } = useGetUserProfile(username!);
+  const { mutate: $follow, isPending: isPendingFollow } = useFollowUser();
+  const { mutate: $unfollow, isPending: isPendingUnFollow } = useUnFollowUser();
+  console.log(userProfile);
   const { posts } = useGetPostByUser(username!);
-  console.log("userProfile Post by user >>>", posts);
+
+  const handleFollow = () => {
+    $follow(userProfile?.user?.id, {
+      onSuccess: () => {
+        Swal({
+          title: "Follow User Successfully",
+          icon: "success",
+        });
+        queryClient.invalidateQueries({ queryKey: ["user-profile"] });
+      },
+    });
+  };
+
+  const handleUnFollow = () => {
+    $unfollow(userProfile?.user?.id, {
+      onSuccess: () => {
+        Swal({
+          title: "UnFollow User Successfully",
+          icon: "success",
+        });
+        queryClient.invalidateQueries({ queryKey: ["user-profile"] });
+      },
+    });
+  };
+
   return (
     <div className="w-[100%] ">
       <Header></Header>
@@ -109,7 +142,19 @@ const UserProfilePage = () => {
               </span>
             </div>
             <div className="mt-4">
-              <Button text="Follow"></Button>
+              {userProfile?.isFollowing ? (
+                <Button
+                  handleBtn={handleUnFollow}
+                  text="Unfollow"
+                  isLoading={isPendingUnFollow}
+                ></Button>
+              ) : (
+                <Button
+                  handleBtn={handleFollow}
+                  text="Follow"
+                  isLoading={isPendingFollow}
+                ></Button>
+              )}
             </div>
           </div>
         </div>

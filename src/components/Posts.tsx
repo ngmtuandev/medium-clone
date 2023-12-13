@@ -4,13 +4,16 @@ import formatCreatedAt from "@/helpers/formatDate";
 import getRandomNumber from "@/helpers/randomReadTime";
 import { useGetPosts } from "@/hooks/post/useGetPost";
 import { useNavigate } from "react-router-dom";
-import { Skeleton } from "@nextui-org/react";
 
 import Tags from "./Tags";
+import { useTagStore } from "@/store/tagsStore";
 const Posts = () => {
   const navigate = useNavigate();
+  let selectedTag = useTagStore((state: any) => state.selectedTag);
 
-  const { data, fetchNextPage, hasNextPage, isLoading } = useGetPosts();
+  const { data, fetchNextPage, hasNextPage, isLoading } = useGetPosts(
+    selectedTag || ""
+  );
   console.log("is loading >>>>", isLoading);
 
   const _posts = data?.pages?.reduce((acc, page) => {

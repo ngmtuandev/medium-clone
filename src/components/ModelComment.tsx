@@ -61,7 +61,7 @@ const ModelComment = ({ postId }: { postId: string }) => {
             <div className="flex gap-2 items-center">
               <img
                 className="w-[32px] rounded-full h-[32px]"
-                src={getRandomImage()}
+                src="https://images.pexels.com/photos/17788277/pexels-photo-17788277/free-photo-of-gift-shop-by-the-street.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
               ></img>
               <span>{dataUser?.username}</span>
             </div>
@@ -99,7 +99,8 @@ const ModelComment = ({ postId }: { postId: string }) => {
                   >
                     <img
                       className="w-[36px] mr-2 h-[36px] rounded-full"
-                      src={item?.user?.image ?? getRandomImage()}
+                      // src={item?.user?.image ?? getRandomImage()}
+                      src="https://images.pexels.com/photos/17788277/pexels-photo-17788277/free-photo-of-gift-shop-by-the-street.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                     ></img>
                   </Tooltip>
                   <div className="flex flex-col">
@@ -110,7 +111,7 @@ const ModelComment = ({ postId }: { postId: string }) => {
                   </div>
                 </div>
                 <div className="mt-2">
-                  <span>{item?.text}</span>T
+                  <span>{item?.text}</span>
                 </div>
               </div>
             );

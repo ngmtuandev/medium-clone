@@ -1,5 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home, Login, Signup, UserProfile, DetailPost } from "@/pages";
+import {
+  Home,
+  Login,
+  Signup,
+  UserProfile,
+  DetailPost,
+  ProfileMePage,
+} from "@/pages";
 import { RouterProvider } from "@/providers/router-provider";
 import path from "@/utils/path";
 import CreatePost from "@/pages/CreatePost";
@@ -27,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: path.CREATE_POST,
     element: <CreatePost></CreatePost>,
+  },
+  {
+    path: path.INFO_ME,
+    element: <ProfileMePage></ProfileMePage>,
   },
 ]);
 

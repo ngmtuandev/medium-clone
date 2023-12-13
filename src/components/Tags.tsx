@@ -5,18 +5,21 @@ import { Chip } from "@nextui-org/react";
 
 const Tags = () => {
   const { tags, isLoading } = useGetTags();
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string>("");
   const setTags = useTagStore((state: any) => state.setTags);
+  const setSelectedTag = useTagStore((state: any) => state.setSelectedTag);
   const _tags = useTagStore((state: any) => state.tags)?.slice(0, 10);
   useEffect(() => {
     setTags(tags);
   }, [tags]);
   const handleSeletedTag = (tag: string) => {
-    const isTagSelected = selectedTags?.includes(tag);
+    const isTagSelected = selectedTags == tag;
     if (isTagSelected) {
-      selectedTags.filter((item) => item !== tag);
+      setSelectedTags("");
+      setSelectedTag("");
     } else {
-      setSelectedTags((tagsSelected: any) => [...tagsSelected, tag]);
+      setSelectedTags(tag);
+      setSelectedTag(tag);
     }
   };
   return (
@@ -27,8 +30,7 @@ const Tags = () => {
             <div key={tag?.id} className="cursor-pointer">
               <Chip
                 className={`px-[8px] py-[8px] ${
-                  selectedTags.includes(tag?.id) &&
-                  "bg-color-cray-200 text-white"
+                  selectedTags == tag?.id && "bg-color-cray-200 text-white"
                 } content-between flex justify-center text-center items-center`}
                 color={selectedTags.includes(tag?.id) ? "warning" : "primary"}
                 variant="dot"

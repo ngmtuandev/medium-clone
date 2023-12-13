@@ -8,7 +8,7 @@ const Button = ({
   handleBtn,
 }: {
   text: string;
-  isLoading: boolean;
+  isLoading?: boolean;
   handleBtn: () => void;
 }) => {
   const handleSubmit = () => {

@@ -3,8 +3,15 @@ import icons from "@/utils/icons";
 import path from "@/utils/path";
 import { useEffect, memo } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@nextui-org/react";
+
 const Header = () => {
-  const { IoIosSearch, IoIosLogOut, TfiWrite } = icons;
+  const { IoIosSearch, IoIosLogOut, TfiWrite, CiUser } = icons;
 
   const navigation = useNavigate();
 
@@ -71,12 +78,44 @@ const Header = () => {
               <span className="ml-2">Write</span>
             </div>
             <div className=" items-center flex justify-center gap-4 cursor-pointer">
-              <div className="md:inline-block sm:hidden">
-                Hello, {dataUser?.username}
-              </div>
-              <div onClick={handleLogout}>
-                <IoIosLogOut size={25} color="black"></IoIosLogOut>
-              </div>
+              <Dropdown>
+                <DropdownTrigger>
+                  <div className="md:inline-block sm:hidden">
+                    Hello, {dataUser?.username}
+                  </div>
+                </DropdownTrigger>
+                <DropdownMenu
+                  className="px-[12px] py-[8px]"
+                  aria-label="Dynamic Actions"
+                >
+                  <DropdownItem
+                    className="px-[4px] mb-4 py-[8px] bg-none mt-2"
+                    key={1}
+                  >
+                    <div
+                      className="flex px-[8px] justify-between"
+                      onClick={() => {
+                        navigation(`/info-me/${dataUser?.username}`);
+                      }}
+                    >
+                      <CiUser size={25} color="black"></CiUser>
+                      <span>Profile</span>
+                    </div>
+                  </DropdownItem>
+                  <DropdownItem
+                    className="px-[4px] mb-4 py-[8px] bg-none"
+                    key={2}
+                  >
+                    <div
+                      className="flex px-[8px] justify-between"
+                      onClick={handleLogout}
+                    >
+                      <IoIosLogOut size={25} color="black"></IoIosLogOut>
+                      <span>Logout</span>
+                    </div>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
             </div>
           </div>
         )}

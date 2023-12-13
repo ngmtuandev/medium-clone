@@ -6,19 +6,23 @@ import icons from "@/utils/icons";
 import { useLikePost } from "@/hooks/post/useLikePost";
 import { useAuth } from "@/store/authStore";
 import { useUnLikePost } from "@/hooks/post/useUnLikePost";
-import { useTagStore } from "@/store/tagsStore";
 import ModelComment from "@/components/ModelComment";
 import { useComment } from "@/store/commentStore";
 import { memo, useEffect } from "react";
-import { useGetComments } from "@/hooks/comment/useGetComments";
+import { useFollowUser } from "@/hooks/user/useFollow";
+import Swal from "sweetalert";
+
 const DetailPost = () => {
   let { slug } = useParams();
   const navigate = useNavigate();
   const { mutate: $likePost, isPending } = useLikePost();
   const { mutate: $unLikePost } = useUnLikePost();
   const { itemPost, isLoading } = useGetItemPost(slug!);
+  const { mutate: $follow, isPending: isPendingFollow } = useFollowUser();
   const dataUser = useAuth((state: any) => state.dataUser);
   const { AiFillLike, AiOutlineLike, FaComments } = icons;
+
+  console.log("item post >>>>", itemPost);
 
   const handleLike = (id: string) => {
     $likePost(id);
@@ -38,6 +42,17 @@ const DetailPost = () => {
   useEffect(() => {
     return setIsShowModel(false);
   }, []);
+
+  const handleFollowUser = (idFollow: string) => {
+    $follow(idFollow, {
+      onSuccess: () => {
+        Swal({
+          title: `Follow ${itemPost?.author?.username} successfully`,
+          icon: "success",
+        });
+      },
+    });
+  };
 
   return (
     <div className="w-[100%] relative">
@@ -68,8 +83,14 @@ const DetailPost = () => {
               <span className="text-gray-800 font-semibold">
                 {itemPost?.author?.username}
               </span>
-              <span className="font-semibold text-color-cray-200 text-[13px] cursor-pointer">
-                Follow
+              <span
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleFollowUser(itemPost?.author?.id);
+                }}
+                className="font-semibold text-color-cray-200 text-[13px] cursor-pointer"
+              >
+                {isPendingFollow ? "..." : "Follow"}
               </span>
             </div>
           </div>
