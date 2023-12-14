@@ -43,9 +43,9 @@ const Header = () => {
         </div>
       </div>
       <div className="w-[25%] h-[100%] md:flex justify-center sm:hidden sm:text-[15px] text-[12px] items-center gap-9">
-        <span className="cursor-pointer font-semibold">Bài viết</span>
-        <span className="cursor-pointer font-semibold">Hỏi đáp</span>
-        <span className="cursor-pointer font-semibold">Thảo luận</span>
+        <span className="cursor-pointer font-semibold">Posts</span>
+        <span className="cursor-pointer font-semibold">Questions</span>
+        <span className="cursor-pointer font-semibold">Discuss</span>
       </div>
       <div className="sm:hidden md:w-[45%] flex justify-center items-center h-[90%]">
         <input
@@ -61,7 +61,7 @@ const Header = () => {
         {!isLogin ? (
           <div className="flex justify-center gap-1 items-center">
             <div className="hover:text-color-cray-200 font-medium">
-              <NavLink to={"/login"}>Đăng nhập</NavLink>
+              <NavLink to={"/login"}>Login</NavLink>
             </div>
             <span>{`  / `}</span>
             <div className="hover:text-color-cray-200 font-medium">

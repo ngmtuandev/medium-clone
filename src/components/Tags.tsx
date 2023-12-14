@@ -7,8 +7,9 @@ const Tags = () => {
   const { tags, isLoading } = useGetTags();
   const [selectedTags, setSelectedTags] = useState<string>("");
   const setTags = useTagStore((state: any) => state.setTags);
+  let allTags = useTagStore((state: any) => state.tags);
+  const [_tags, set_Tags] = useState(allTags?.slice(0, 10));
   const setSelectedTag = useTagStore((state: any) => state.setSelectedTag);
-  const _tags = useTagStore((state: any) => state.tags)?.slice(0, 10);
   useEffect(() => {
     setTags(tags);
   }, [tags]);
@@ -44,6 +45,11 @@ const Tags = () => {
             </div>
           );
         })}
+      </div>
+      <div onClick={() => set_Tags(allTags)} className="mt-4 flex justify-end">
+        <span className="text-sm cursor-pointer hover:text-color-cray-200 font-semibold">
+          See More Tag
+        </span>
       </div>
     </div>
   );

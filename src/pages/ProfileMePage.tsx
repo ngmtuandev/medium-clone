@@ -1,31 +1,16 @@
-import { Header, ListPost } from "@/components";
+import { Header, ListFollow, ListPost } from "@/components";
 import { useGetPostByUser } from "@/hooks/user/useAllPostByUser";
 import { useAuth } from "@/store/authStore";
-import { Tabs, Tab } from "@nextui-org/react";
+import { Tabs, Tab, Avatar } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import getRandomImage from "@/helpers/randomImage";
 import { useGetFollows } from "@/hooks/user/useAllFlower";
+
 const ProfileMePage = () => {
   const dataUser = useAuth((state: any) => state.dataUser);
   const { posts } = useGetPostByUser(dataUser?.username!);
-  // const { follows, isLoading } = useGetFollows(dataUser?.id);
-  // console.log("follower >>>", follows);
-
-  // useEffect(() => {
-  //   const getchApi = async () => {
-  //     let data = await fetch(
-  //       "https://ulitmate-blog-app-production.up.railway.app/api/users/followers",
-  //       {
-  //         method: "get",
-  //         body: JSON.stringify({ id: dataUser?.id }),
-  //       }
-  //     );
-  //     data = await data.json();
-  //     console.log("data follower", data);
-  //     return data;
-  //   };
-  //   getchApi();
-  // }, []);
+  const { follows, isLoading } = useGetFollows(dataUser?.id);
+  console.log("follower >>>", follows);
 
   const [tab, setTab] = useState("Posts");
   const handleSelectTab = (key: any) => {
@@ -65,18 +50,33 @@ const ProfileMePage = () => {
         <div className="w-[25%]">
           <div>
             <div className="flex-col">
-              <img
-                className="w-[80px] h-[80px] mb-2 rounded-full"
+              <Avatar
                 src={
                   dataUser?.image !== null ? dataUser?.image : getRandomImage()
                 }
-              ></img>
+                size="lg"
+                isBordered
+                className="mb-2"
+              ></Avatar>
               <span className="my-4 text-[18px] font-semibold">
                 {dataUser?.email}
               </span>
               <p className="font-medium text-[12px] text-color-cray-200 cursor-pointer">
                 Edit Profile
               </p>
+            </div>
+            <div>
+              <h3 className="mt-6 uppercase font-semibold mb-2">
+                List User Follow
+              </h3>
+              {follows &&
+                follows?.followings?.map((user: TUser) => {
+                  return (
+                    <div key={user?.id}>
+                      <ListFollow user={user}></ListFollow>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>

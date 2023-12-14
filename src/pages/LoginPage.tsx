@@ -59,7 +59,7 @@ const LoginPage = () => {
           <span className="text-[40px] font-bold text-gray-800">dium</span>
         </div>
         <span className="justify-center items-center flex font-semibold text-gray-700">
-          Đăng nhập vào Medium
+          Login with Medium
         </span>
         <div>
           <InputHookForm
@@ -99,11 +99,11 @@ const LoginPage = () => {
           fullWidth
           className="mt-3"
         >
-          Đăng nhập
+          Login
         </Button>
         <div className="text-color-cray-200 text-[14px] font-semibold flex justify-end mr-2 mt-4">
           <NavLink to={"/sign-up"}>
-            <span>Đăng ký</span>
+            <span>Register</span>
           </NavLink>
         </div>
       </div>

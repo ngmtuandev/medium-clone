@@ -10,6 +10,7 @@ import { useUnFollowUser } from "@/hooks/user/useUnFlollow";
 import { useFollowUser } from "@/hooks/user/useFollow";
 import Swal from "sweetalert";
 import { useQueryClient } from "@tanstack/react-query";
+import { Avatar } from "@nextui-org/react";
 
 const UserProfilePage = () => {
   const { username } = useParams();
@@ -113,14 +114,12 @@ const UserProfilePage = () => {
         <div className="w-[30%] h-screen pl-[40px] pt-[40px] ml-2 border-l-1">
           <div>
             <div>
-              <img
-                className="w-[80px] h-[80px] rounded-full"
-                src={
-                  userProfile?.image !== null
-                    ? userProfile?.image
-                    : getRandomImage()
-                }
-              ></img>
+              <Avatar
+                isBordered
+                size="lg"
+                className="z-0"
+                src={userProfile?.image ?? getRandomImage()}
+              ></Avatar>
             </div>
             <div className="mt-3">
               <span className="font-semibold text-gray-700 text-[20px]">

@@ -5,7 +5,7 @@ export const useGetFollows = (id: string) => {
     queryKey: ["follow", id],
     queryFn: () => getAllFlower(id),
   });
-  console.log("data test >>", id);
+  console.log("data test >>", data);
   return {
     follows: data,
     isLoading,
