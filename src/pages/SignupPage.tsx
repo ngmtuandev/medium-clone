@@ -13,7 +13,6 @@ const SignupPage = () => {
     formState: { errors },
     reset,
     getValues,
-    watch,
   } = useForm({
     defaultValues: {
       username: "",

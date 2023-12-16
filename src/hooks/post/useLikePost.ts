@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiLikePost } from "@/apis/posts/likePostApi";
 export const useLikePost = () => {
   const queryClient = useQueryClient();

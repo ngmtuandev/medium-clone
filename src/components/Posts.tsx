@@ -75,12 +75,10 @@ const Posts = () => {
               </div>
             </div>
             <div className="w-[35%] ml-4">
-              {/* <Skeleton isLoaded={!isLoading}> */}
               <img
                 src={getRandomImage()}
                 className="w-[70%] rounded-md my-4"
               ></img>
-              {/* </Skeleton> */}
             </div>
           </div>
         ))}

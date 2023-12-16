@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
 const MceTinyText = ({ setDesc, hight }: any) => {
@@ -9,7 +9,7 @@ const MceTinyText = ({ setDesc, hight }: any) => {
       <Editor
         onChange={(e) => setDesc(e.target.getContent())}
         apiKey="y9oom0880sfhg5fi9gjn9n34wvv05gn4s44tvupdficp9m90"
-        onInit={(evt, editor) => ((editorRef.current as any) = editor)}
+        onInit={(_, editor) => ((editorRef.current as any) = editor)}
         init={{
           height: hight ? +hight : 300,
           menubar: false,

@@ -1,15 +1,6 @@
-import { Button, Header, MceTiNyText } from "@/components";
+import { Button, Header } from "@/components";
 import { getBase64 } from "@/helpers/getBase64";
-import { useCreateNewPost } from "@/hooks/post/useCreateNewPost";
 import { useState } from "react";
-
-// type TData = {
-//   featuredImage: any;
-//   title: string;
-//   description: string;
-// };
-
-// const { mutate: $createPost, isPending } = useCreateNewPost();
 
 const CreatePost = () => {
   const [showTitle, setShowTitle] = useState(false);
@@ -23,8 +14,7 @@ const CreatePost = () => {
     tagIds: [],
   });
   const handleCreatePost = async () => {
-    console.log("data", data);
-    const rs = await fetch(
+    await fetch(
       "https://ulitmate-blog-app-production.up.railway.app/api/posts",
       {
         body: JSON.stringify(data),
@@ -35,18 +25,8 @@ const CreatePost = () => {
         method: "post",
       }
     );
-    console.log(rs);
-    // $createPost(data, {
-    //   onSuccess: () => {
-    //     alert("succes");
-    //   },
-    //   onError: () => {
-    //     alert("err");
-    //   },
-    // });
   };
   const handleSelectImage = async (event: any) => {
-    console.log(event.target.files);
     const imgBase64 = await getBase64(event.target.files[0]);
     setData({ ...data, featuredImage: imgBase64 });
   };

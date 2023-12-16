@@ -14,7 +14,6 @@ const LoginPage = () => {
     formState: { errors },
     reset,
     getValues,
-    watch,
   } = useForm({
     defaultValues: {
       username: "",

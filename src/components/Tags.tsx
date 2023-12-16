@@ -4,8 +4,8 @@ import { memo, useEffect, useState } from "react";
 import { Chip } from "@nextui-org/react";
 
 const Tags = () => {
-  const { tags, isLoading } = useGetTags();
-  const [selectedTags, setSelectedTags] = useState<string>("");
+  const { tags } = useGetTags();
+  const [selectedTags, setSelectedTags] = useState("");
   const setTags = useTagStore((state: any) => state.setTags);
   let allTags = useTagStore((state: any) => state.tags);
   const [_tags, set_Tags] = useState(allTags?.slice(0, 10));
@@ -26,7 +26,7 @@ const Tags = () => {
   return (
     <div className="flex-1">
       <div className="gap-3 scrollbar-none sm:flex md:flex md:flex-wrap">
-        {_tags?.map((tag: any) => {
+        {_tags?.map((tag: { id: string; name: string }) => {
           return (
             <div key={tag?.id} className="cursor-pointer">
               <Chip

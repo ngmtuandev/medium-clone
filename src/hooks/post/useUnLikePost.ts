@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiUnLikePost } from "@/apis/posts/unLikePost";
 export const useUnLikePost = () => {
   const queryClient = useQueryClient();
