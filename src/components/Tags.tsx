@@ -24,7 +24,7 @@ const Tags = () => {
     }
   };
   return (
-    <div className="flex-1">
+    <div className="flex-1 z-20">
       <div className="gap-3 scrollbar-none sm:flex md:flex md:flex-wrap">
         {_tags?.map((tag: { id: string; name: string }) => {
           return (

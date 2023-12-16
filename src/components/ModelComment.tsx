@@ -86,7 +86,7 @@ const ModelComment = ({ postId }: { postId: string }) => {
             </div>
           </div>
         </div>
-        <div className="w-[100%] h-auto overflow-auto scrollbar-none scrollbar-thumb-gray-900 scrollbar-track-gray-100">
+        <div className="w-[100%] h-auto overflow-auto scrollbar-none  scrollbar-track-gray-100">
           {comments?.map((item: any) => {
             return (
               <div key={item?.id} className="pb-[8px] border-b-1 mt-2">
