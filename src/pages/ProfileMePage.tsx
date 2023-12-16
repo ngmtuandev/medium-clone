@@ -2,14 +2,14 @@ import { Header, ListFollow, ListPost } from "@/components";
 import { useGetPostByUser } from "@/hooks/user/useAllPostByUser";
 import { useAuth } from "@/store/authStore";
 import { Tabs, Tab, Avatar } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import getRandomImage from "@/helpers/randomImage";
 import { useGetFollows } from "@/hooks/user/useAllFlower";
 
 const ProfileMePage = () => {
   const dataUser = useAuth((state: any) => state.dataUser);
   const { posts } = useGetPostByUser(dataUser?.username!);
-  const { follows, isLoading } = useGetFollows(dataUser?.id);
+  const { follows } = useGetFollows(dataUser?.id);
   console.log("follower >>>", follows);
 
   const [tab, setTab] = useState("Posts");

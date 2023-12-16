@@ -1,4 +1,3 @@
-import getRandomImage from "@/helpers/randomImage";
 import Swal from "sweetalert";
 import { useAuth } from "@/store/authStore";
 import { useComment } from "@/store/commentStore";
