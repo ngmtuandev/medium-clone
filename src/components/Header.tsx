@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <div className="flex w-[100%] fixed z-100 bg-white shadow-lg h-[70px] gap-3 md:justify-between sm:justify-between items-center">
+    <div className="flex w-[100%] fixed z-600 bg-white shadow-lg h-[70px] gap-3 md:justify-between sm:justify-between items-center">
       <div className="md:w-[15%]  sm:w-[30%] h-[100%] ">
         <div
           className="flex h-[100%] justify-center items-center text-center cursor-pointer"
