@@ -3,7 +3,7 @@ import { useAuth } from "@/store/authStore";
 import { useComment } from "@/store/commentStore";
 import icons from "@/utils/icons";
 import { Button } from ".";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useAddComment } from "@/hooks/comment/useAddComment";
 import { useGetComments } from "@/hooks/comment/useGetComments";
 import formatCreatedAt from "@/helpers/formatDate";
@@ -15,9 +15,7 @@ const ModelComment = ({ postId }: { postId: string }) => {
   const [body, setBody] = useState("");
   const { IoMdClose } = icons;
   const { mutate: $addComment, isPending } = useAddComment();
-  const { comments, isLoading } = useGetComments(postId);
-  console.log("comment test id ne >>>", comments);
-  console.log("isloding", isLoading);
+  const { comments } = useGetComments(postId);
   const handleCloseModel = () => {
     setIsShowModel(false);
   };
@@ -98,7 +96,6 @@ const ModelComment = ({ postId }: { postId: string }) => {
                   >
                     <img
                       className="w-[36px] mr-2 h-[36px] rounded-full"
-                      // src={item?.user?.image ?? getRandomImage()}
                       src="https://images.pexels.com/photos/17788277/pexels-photo-17788277/free-photo-of-gift-shop-by-the-street.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                     ></img>
                   </Tooltip>
@@ -121,4 +118,4 @@ const ModelComment = ({ postId }: { postId: string }) => {
   );
 };
 
-export default ModelComment;
+export default memo(ModelComment);

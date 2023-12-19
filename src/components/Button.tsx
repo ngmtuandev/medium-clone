@@ -1,6 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
 import { Button as Btn } from "@nextui-org/react";
+import { memo } from "react";
 
 const Button = ({
   text,
@@ -29,4 +30,4 @@ const Button = ({
   );
 };
 
-export default Button;
+export default memo(Button);

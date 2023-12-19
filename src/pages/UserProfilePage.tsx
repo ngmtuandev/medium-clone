@@ -20,7 +20,6 @@ const UserProfilePage = () => {
   const { userProfile } = useGetUserProfile(username!);
   const { mutate: $follow, isPending: isPendingFollow } = useFollowUser();
   const { mutate: $unfollow, isPending: isPendingUnFollow } = useUnFollowUser();
-  console.log(userProfile);
   const { posts } = useGetPostByUser(username!);
 
   const handleFollow = () => {
@@ -70,15 +69,6 @@ const UserProfilePage = () => {
                   onClick={() => navigate(`/post/${post?.slug}`)}
                 >
                   <div className="w-[65%] mb-8">
-                    {/* <div className="flex gap-2 items-center">
-                      <img
-                        className="w-[28px] h-[28px] rounded-full"
-                        src={post?.author?.image ?? getRandomImage()}
-                      ></img>
-                      <span className="font-semibold text-[15px]">
-                        {post?.author?.username}
-                      </span>
-                    </div> */}
                     <div>
                       <span className="font-bold text-[20px]">
                         {post?.title}

@@ -27,7 +27,7 @@ const ProfileMePage = () => {
         ></img>
       </div>
       <div className="w-[100%] flex justify-between pt-[40px] h-screen  px-main">
-        <div className="w-[70%] pr-[12px] border-r-1">
+        <div className="w-[70%] pr-[12px]">
           <Tabs
             key={"underlined"}
             variant={"underlined"}

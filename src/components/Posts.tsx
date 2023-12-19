@@ -14,7 +14,7 @@ const Posts = () => {
   const { data, fetchNextPage, hasNextPage, isLoading } = useGetPosts(
     selectedTag || ""
   );
-  console.log("is loading >>>>", isLoading);
+  console.log("is loading >>>>", data);
 
   const _posts = data?.pages?.reduce((acc, page) => {
     return [...acc, ...page.posts];
@@ -22,7 +22,6 @@ const Posts = () => {
 
   const handleFetchNextPage = () => {
     if (hasNextPage) {
-      // ktra còn data không ?
       fetchNextPage();
     }
   };
@@ -42,7 +41,7 @@ const Posts = () => {
         {_posts?.map((post: any) => (
           <div
             key={post.id}
-            className="flex cursor-pointer"
+            className="flex cursor-pointer lg:py-[32px] border-b-[1px] border-gray-200"
             onClick={() => navigate(`/post/${post?.slug}`)}
           >
             <div className="w-[65%] mb-8">
@@ -72,6 +71,20 @@ const Posts = () => {
                 <span className="text-[12px] ml-3 font-semibold text-gray-700">
                   {getRandomNumber()} phút đọc
                 </span>
+              </div>
+              <div className="flex gap-6 mt-2">
+                {post?.tags &&
+                  post?.tags?.map(
+                    (item: { id: string; name: string; slug: string }) => {
+                      return (
+                        <div key={item?.id}>
+                          <span className="text-gray-400 text-[13px]">
+                            {`#${item?.name}`}
+                          </span>
+                        </div>
+                      );
+                    }
+                  )}
               </div>
             </div>
             <div className="w-[35%] ml-4">

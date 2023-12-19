@@ -6,8 +6,10 @@ import { TfiWrite } from "react-icons/tfi";
 import { FaComments } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
+import { CiImageOn } from "react-icons/ci";
 
 const icons = {
+  CiImageOn,
   CiUser,
   IoIosSearch,
   IoIosLogOut,

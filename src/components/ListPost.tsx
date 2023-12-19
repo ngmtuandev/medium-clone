@@ -11,19 +11,10 @@ const ListPost = ({ posts }: { posts: any }) => {
         return (
           <div
             key={post.id}
-            className="flex cursor-pointer justify-between items-center"
+            className="flex cursor-pointer justify-between lg:py-[28px] border-b-[1px] border-gray-200 items-center"
             onClick={() => navigate(`/post/${post?.slug}`)}
           >
             <div className="w-[65%] mb-8">
-              {/* <div className="flex gap-2 items-center">
-                      <img
-                        className="w-[28px] h-[28px] rounded-full"
-                        src={post?.author?.image ?? getRandomImage()}
-                      ></img>
-                      <span className="font-semibold text-[15px]">
-                        {post?.author?.username}
-                      </span>
-                    </div> */}
               <div>
                 <span className="font-bold text-[20px]">{post?.title}</span>
               </div>

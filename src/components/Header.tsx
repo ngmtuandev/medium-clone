@@ -71,11 +71,10 @@ const Header = () => {
         ) : (
           <div className="flex items-center gap-6">
             <div
-              className="flex justify-center cursor-pointer items-center"
+              className="flex text-gray-600 justify-center cursor-pointer items-center"
               onClick={() => navigation(`${path.CREATE_POST}`)}
             >
-              <TfiWrite size={22}></TfiWrite>
-              <span className="ml-2">Write</span>
+              <TfiWrite size={22} color="gray"></TfiWrite>
             </div>
             <div className=" items-center flex justify-center gap-4 cursor-pointer">
               <Dropdown>
