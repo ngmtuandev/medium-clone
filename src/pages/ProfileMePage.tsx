@@ -10,7 +10,6 @@ const ProfileMePage = () => {
   const dataUser = useAuth((state: any) => state.dataUser);
   const { posts } = useGetPostByUser(dataUser?.username!);
   const { follows } = useGetFollows(dataUser?.id);
-  console.log("follower >>>", follows);
 
   const [tab, setTab] = useState("Posts");
   const handleSelectTab = (key: any) => {
