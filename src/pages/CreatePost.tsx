@@ -29,12 +29,7 @@ const CreatePost = () => {
     toolbar: toolbarOptions,
   };
 
-  const handleQuillChange = (
-    content: string,
-    delta: any,
-    source: string,
-    editor: any
-  ) => {
+  const handleQuillChange = (content: string) => {
     setData({ ...data, html: content });
   };
   const [data, setData] = useState<TDataCreatePost>({

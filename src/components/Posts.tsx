@@ -11,10 +11,7 @@ const Posts = () => {
   const navigate = useNavigate();
   let selectedTag = useTagStore((state: any) => state.selectedTag);
 
-  const { data, fetchNextPage, hasNextPage, isLoading } = useGetPosts(
-    selectedTag || ""
-  );
-  console.log("is loading >>>>", data);
+  const { data, fetchNextPage, hasNextPage } = useGetPosts(selectedTag || "");
 
   const _posts = data?.pages?.reduce((acc, page) => {
     return [...acc, ...page.posts];
